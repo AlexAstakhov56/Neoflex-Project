@@ -1,0 +1,47 @@
+.design {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 132px;
+  padding-bottom: 112px;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  &__info {
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 48px;
+    color: #1c1c1e;
+    margin-bottom: 36px;
+    max-width: 609px;
+
+    @media (max-width: 500px) {
+      font-size: 36px;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+
+    @media (max-width: 500px) {
+      grid-template-columns: 1fr;
+    }
+    img {
+      cursor: pointer;
+      transition: transform 0.2s linear;
+      &:hover {
+        transform: translateY(-5px);
+      }
+    }
+  }
+}

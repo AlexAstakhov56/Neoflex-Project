@@ -1,0 +1,18 @@
+.link {
+  font-weight: 700;
+  font-size: 16px;
+  transition: color 0.2s linear;
+  color: #1d1929;
+
+  &.active {
+    color: #b2a35f;
+  }
+
+  &:hover {
+    color: #b2a35f;
+  }
+
+  @media (max-width: 500px) {
+    // font-size: 13px;
+  }
+}

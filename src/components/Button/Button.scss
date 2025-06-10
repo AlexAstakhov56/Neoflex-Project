@@ -1,0 +1,19 @@
+@import "../../index";
+
+.btn {
+  background-color: $blue-color;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background 0.2s linear;
+
+  &:hover {
+    background-color: rgba(0, 60, 255, 0.7);
+  }
+}
+.btn-red {
+  background-color: rgba(217, 55, 55, 0.8);
+}

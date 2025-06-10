@@ -1,0 +1,56 @@
+.footer {
+  background-color: #b2b2b233;
+  padding-top: 96px;
+  padding-bottom: 92px;
+
+  @media (max-width: 500px) {
+    padding: 40px 0;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+
+    @media (max-width: 500px) {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__logo {
+  }
+
+  &__tel {
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 7px;
+  }
+
+  &__mail,
+  &__cookies {
+    font-weight: 500;
+    font-size: 16;
+    color: #2d3748;
+  }
+
+  &__links {
+    display: flex;
+    column-gap: 32px;
+    row-gap: 10px;
+    flex-wrap: wrap;
+
+    @media (max-width: 500px) {
+      column-gap: 15px;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    margin-top: 28px;
+    margin-bottom: 32px;
+  }
+}
