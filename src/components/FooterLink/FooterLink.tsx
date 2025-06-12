@@ -1,5 +1,5 @@
 import { FC } from "react";
-import cl from "./MyLink.module.scss";
+import "./FooterLink.scss";
 
 interface MyLinkProps {
   text: string;
@@ -8,11 +8,9 @@ interface MyLinkProps {
 
 const MyLink: FC<MyLinkProps> = ({ text, link }) => {
   return (
-    <div>
-      <a className={cl.link} href={link}>
-        {text}
-      </a>
-    </div>
+    <a className="footer__link" href={link}>
+      {text}
+    </a>
   );
 };
 

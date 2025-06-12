@@ -9,12 +9,7 @@
   @media (max-width: 900px) {
     flex-direction: column;
     align-items: center;
-  }
-
-  &__image {
-    @media (max-width: 900px) {
-      display: none;
-    }
+    gap: 20px;
   }
 
   &__info {

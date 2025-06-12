@@ -1,12 +1,17 @@
 import { FC } from "react";
 import "./FeaturesSection.scss";
 
+const features: string[] = [
+  "Powerfull online protection.",
+  "Cashback without borders.",
+  "Personal design",
+  "Work anywhere in the world",
+];
+
 const FeaturesSection: FC = () => {
   return (
     <section className="container features">
-      <div className="features__image">
-        <img src="/Images/FeaturesImage.png" alt="featuresImg" />
-      </div>
+      <img src="/Images/FeaturesImage.png" alt="featuresImg" />
 
       <div className="features__info">
         <h2 className="features__title">
@@ -18,22 +23,12 @@ const FeaturesSection: FC = () => {
         </p>
 
         <ul className="features__list">
-          <li className="features__list_item">
-            <img src="/Icons/check.svg" alt="check" />
-            Powerfull online protection.
-          </li>
-          <li className="features__list_item">
-            <img src="/Icons/check.svg" alt="check" />
-            Cashback without borders.
-          </li>
-          <li className="features__list_item">
-            <img src="/Icons/check.svg" alt="check" />
-            Personal design
-          </li>
-          <li className="features__list_item">
-            <img src="/Icons/check.svg" alt="check" />
-            Work anywhere in the world
-          </li>
+          {features.map((f) => (
+            <li key={f} className="features__list_item">
+              <img src="/Icons/check.svg" alt="check" />
+              {f}
+            </li>
+          ))}
         </ul>
       </div>
     </section>

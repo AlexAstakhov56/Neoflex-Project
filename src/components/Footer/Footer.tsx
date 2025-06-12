@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { ILink } from "../../types/Link.interface";
-import MyLink from "../../components/MyLink/MyLink";
+import MyLink from "../FooterLink/FooterLink";
 import "./Footer.scss";
 
 const links: ILink[] = [
@@ -66,7 +66,7 @@ const Footer: FC = () => {
           ))}
         </div>
 
-        <div className="footer__line"></div>
+        <div className="footer__divider"></div>
 
         <p className="footer__cookies">
           We use cookies to personalize our services and improve the user

@@ -1,4 +1,4 @@
-.link {
+.navlink {
   font-weight: 700;
   font-size: 16px;
   transition: color 0.2s linear;
@@ -11,8 +11,7 @@
   &:hover {
     color: #b2a35f;
   }
-
-  @media (max-width: 500px) {
-    // font-size: 13px;
+  @media (max-width: 920px) {
+    font-size: 19px;
   }
 }

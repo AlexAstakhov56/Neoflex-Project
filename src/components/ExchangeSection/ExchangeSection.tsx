@@ -16,7 +16,7 @@ const currencyInfo: ICurrency[] = [
     value: 64.78,
   },
   {
-    currency: "USD",
+    currency: "usd",
     value: 60.78,
   },
   {
@@ -44,7 +44,7 @@ const ExchangeSection: FC = () => {
           <ul className="exchange__currencies_grid">
             {currencyInfo.map((cur) => (
               <li key={cur.currency}>
-                {cur.currency}: <span>{cur.value}</span>
+                {cur.currency.toUpperCase()}: <span>{cur.value}</span>
               </li>
             ))}
           </ul>

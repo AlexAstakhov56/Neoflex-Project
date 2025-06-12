@@ -1,6 +1,7 @@
 .notfound {
   display: flex;
   justify-content: space-between;
+  padding-top: 64px;
 
   @media (max-width: 900px) {
     flex-direction: column;
@@ -50,12 +51,6 @@
 
     &:hover {
       background-color: rgba(0, 60, 255, 0.7);
-    }
-  }
-
-  &__image {
-    @media (max-width: 500px) {
-      display: none;
     }
   }
 }
