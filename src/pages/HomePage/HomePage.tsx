@@ -1,14 +1,16 @@
 import { FC } from "react";
-import DesignSection from "../../components/DesignSection/DesignSection";
-import FeaturesSection from "../../components/FeaturesSection/FeaturesSection";
-import ExchangeSection from "../../components/ExchangeSection/ExchangeSection";
-import ServicesSection from "../../components/ServicesSection/ServicesSection";
-import NewsSection from "../../components/NewsSection/NewsSection";
-import SubscribeSection from "../../components/SubscribeSection/SubscribeSection";
-import Layout from "../../layout/Layout";
-import ScrollToTop from "../../utils/ScrollToTop";
+import {
+  SubscribeSection,
+  ServicesSection,
+  NewsSection,
+  ExchangeSection,
+  DesignSection,
+  FeaturesSection,
+} from "../../components";
+import { Layout } from "../../layout";
+import { ScrollToTop } from "../../utils";
 
-const HomePage: FC = () => {
+export const HomePage: FC = () => {
   return (
     <>
       <ScrollToTop />
@@ -25,5 +27,3 @@ const HomePage: FC = () => {
     </>
   );
 };
-
-export default HomePage;

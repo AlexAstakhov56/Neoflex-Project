@@ -1,19 +1,47 @@
 @import "../../index";
 
 .btn {
-  background-color: $blue-color;
   color: #fff;
   font-weight: 700;
   font-size: 16px;
   padding: 16px;
   border-radius: 16px;
   cursor: pointer;
-  transition: background 0.2s linear;
+  transition: opacity 0.2s linear;
 
   &:hover {
-    background-color: rgba(0, 60, 255, 0.7);
+    opacity: 0.8;
   }
 }
-.btn-red {
+
+.default {
+  background-color: $blue-color;
+}
+
+.warning {
   background-color: rgba(217, 55, 55, 0.8);
+}
+
+.subscribe__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #686df1;
+  border-radius: 20px;
+  font-family: "Ubuntu", sans-serif;
+  padding: 3px 28px 3px 13px;
+
+  @media (max-width: 500px) {
+    right: 15px;
+    padding-right: 13px;
+  }
+  span {
+    @media (max-width: 500px) {
+      display: none;
+    }
+  }
 }

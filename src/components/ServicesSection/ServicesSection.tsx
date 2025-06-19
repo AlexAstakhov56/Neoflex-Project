@@ -1,7 +1,7 @@
 import { FC } from "react";
 import "./ServicesSection.scss";
 
-const ServicesSection: FC = () => {
+export const ServicesSection: FC = () => {
   return (
     <section className="container services">
       <h3 className="services__title">
@@ -14,5 +14,3 @@ const ServicesSection: FC = () => {
     </section>
   );
 };
-
-export default ServicesSection;

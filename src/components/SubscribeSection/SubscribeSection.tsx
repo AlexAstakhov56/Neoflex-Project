@@ -1,14 +1,19 @@
-import { FC } from "react";
+import { FC, FormEvent } from "react";
 import "./SubscribeSection.scss";
+import { Button } from "../Button";
 
-const SubscribeSection: FC = () => {
+export const SubscribeSection: FC = () => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
     <section className="container subscribe">
       <h3 className="subscribe__title1">Support</h3>
       <h3 className="subscribe__title2">Subscribe Newsletter & get</h3>
       <h3 className="subscribe__title3">Bank News</h3>
 
-      <form action="post" className="subscribe__form">
+      <form className="subscribe__form" onSubmit={handleSubmit}>
         <div className="subscribe__input_container">
           <img
             src="/Icons/email.svg"
@@ -20,14 +25,12 @@ const SubscribeSection: FC = () => {
             placeholder="Your email"
             className="subscribe__input"
           />
-          <button type="submit" className="subscribe__submit">
+          <Button type="submit" buttonType="subscribe">
             <img src="/Icons/send.svg" alt="send" className="subscribe__send" />
             <span>Subscribe</span>
-          </button>
+          </Button>
         </div>
       </form>
     </section>
   );
 };
-
-export default SubscribeSection;

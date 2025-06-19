@@ -1,7 +1,7 @@
 import { FC } from "react";
 import "./NewsSection.scss";
 
-const NewsSection: FC = () => {
+export const NewsSection: FC = () => {
   return (
     <section className="container news">
       <h3 className="news__title">Current news from the world of finance</h3>
@@ -13,5 +13,3 @@ const NewsSection: FC = () => {
     </section>
   );
 };
-
-export default NewsSection;

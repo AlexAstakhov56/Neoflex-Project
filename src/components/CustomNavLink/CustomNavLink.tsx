@@ -1,13 +1,11 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import "./CustomNavLink.scss";
+import { TLink } from "../../types/TLink.type";
 
-interface CustomNavLinkProps {
-  text: string;
-  link: string;
-}
+type TCustomNavLinkProps = TLink;
 
-const CustomNavLink: FC<CustomNavLinkProps> = ({ link, text }) => {
+export const CustomNavLink: FC<TCustomNavLinkProps> = ({ link, text }) => {
   return (
     <NavLink
       className={({ isActive }) => (isActive ? "navlink active" : "navlink")}
@@ -17,5 +15,3 @@ const CustomNavLink: FC<CustomNavLinkProps> = ({ link, text }) => {
     </NavLink>
   );
 };
-
-export default CustomNavLink;

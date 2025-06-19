@@ -1,13 +1,12 @@
 import { FC, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
-import { RoutePath } from "../../router/routeConfig";
-import { ILink } from "../../types/Link.interface";
-import CustomNavLink from "../CustomNavLink/CustomNavLink";
-import Button from "../Button/Button";
+import { RoutePath } from "../../router";
+import { Button, CustomNavLink } from "../";
+import { TLink } from "../../types/TLink.type";
 
-const Header: FC = () => {
-  const links: ILink[] = [
+export const Header: FC = () => {
+  const links: TLink[] = [
     {
       text: "Credit card",
       link: RoutePath.LOAN,
@@ -45,11 +44,9 @@ const Header: FC = () => {
           {links.map((link) => (
             <CustomNavLink key={link.link} link={link.link} text={link.text} />
           ))}
-          <Button text="Online Bank" />
+          <Button>Online Bank</Button>
         </nav>
       </section>
     </header>
   );
 };
-
-export default Header;

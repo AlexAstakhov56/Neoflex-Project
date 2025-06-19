@@ -1,17 +1,13 @@
 import { FC } from "react";
 import "./FooterLink.scss";
+import { TLink } from "../../types/TLink.type";
 
-interface MyLinkProps {
-  text: string;
-  link: string;
-}
+type TFooterLinkProps = TLink;
 
-const MyLink: FC<MyLinkProps> = ({ text, link }) => {
+export const FooterLink: FC<TFooterLinkProps> = ({ text, link }) => {
   return (
     <a className="footer__link" href={link}>
       {text}
     </a>
   );
 };
-
-export default MyLink;

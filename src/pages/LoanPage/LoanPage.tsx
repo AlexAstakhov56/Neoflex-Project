@@ -1,8 +1,8 @@
 import { FC } from "react";
-import Layout from "../../layout/Layout";
-import ScrollToTop from "../../utils/ScrollToTop";
+import { Layout } from "../../layout";
+import { ScrollToTop } from "../../utils";
 
-const LoanPage: FC = () => {
+export const LoanPage: FC = () => {
   return (
     <>
       <ScrollToTop />
@@ -12,5 +12,3 @@ const LoanPage: FC = () => {
     </>
   );
 };
-
-export default LoanPage;

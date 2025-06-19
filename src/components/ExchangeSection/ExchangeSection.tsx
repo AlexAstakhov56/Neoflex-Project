@@ -1,8 +1,12 @@
 import { FC } from "react";
-import { ICurrency } from "../../types/Currency.interface";
 import "./ExchangeSection.scss";
 
-const currencyInfo: ICurrency[] = [
+type TCurrency = {
+  currency: string;
+  value: number;
+};
+
+const currencyInfo: TCurrency[] = [
   {
     currency: "USD",
     value: 60.78,
@@ -29,7 +33,7 @@ const currencyInfo: ICurrency[] = [
   },
 ];
 
-const ExchangeSection: FC = () => {
+export const ExchangeSection: FC = () => {
   return (
     <section className="container exchange">
       <div className="exchange__wrapper">
@@ -61,5 +65,3 @@ const ExchangeSection: FC = () => {
     </section>
   );
 };
-
-export default ExchangeSection;

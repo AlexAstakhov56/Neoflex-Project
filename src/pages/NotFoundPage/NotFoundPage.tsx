@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import "./NotFoundPage.scss";
-import Layout from "../../layout/Layout";
-import { RoutePath } from "../../router/routeConfig";
-import ScrollToTop from "../../utils/ScrollToTop";
+import { Layout } from "../../layout";
+import { RoutePath } from "../../router";
+import { ScrollToTop } from "../../utils";
 
-const NotFoundPage: FC = () => {
+export const NotFoundPage: FC = () => {
   return (
     <>
       <ScrollToTop />
@@ -30,5 +30,3 @@ const NotFoundPage: FC = () => {
     </>
   );
 };
-
-export default NotFoundPage;

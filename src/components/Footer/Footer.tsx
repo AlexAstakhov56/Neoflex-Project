@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { ILink } from "../../types/Link.interface";
-import MyLink from "../FooterLink/FooterLink";
+import { FooterLink } from "../";
 import "./Footer.scss";
+import { TLink } from "../../types/TLink.type";
 
-const links: ILink[] = [
+const links: TLink[] = [
   {
     text: "About bank",
     link: "#",
@@ -46,7 +46,7 @@ const links: ILink[] = [
   },
 ];
 
-const Footer: FC = () => {
+export const Footer: FC = () => {
   return (
     <footer className="footer">
       <section className="container">
@@ -62,7 +62,7 @@ const Footer: FC = () => {
 
         <div className="footer__links">
           {links.map((link) => (
-            <MyLink key={link.text} link={link.link} text={link.text} />
+            <FooterLink key={link.text} link={link.link} text={link.text} />
           ))}
         </div>
 
@@ -78,5 +78,3 @@ const Footer: FC = () => {
     </footer>
   );
 };
-
-export default Footer;

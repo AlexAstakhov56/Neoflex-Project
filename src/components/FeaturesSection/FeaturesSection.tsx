@@ -8,7 +8,7 @@ const features: string[] = [
   "Work anywhere in the world",
 ];
 
-const FeaturesSection: FC = () => {
+export const FeaturesSection: FC = () => {
   return (
     <section className="container features">
       <img src="/Images/FeaturesImage.png" alt="featuresImg" />
@@ -34,5 +34,3 @@ const FeaturesSection: FC = () => {
     </section>
   );
 };
-
-export default FeaturesSection;

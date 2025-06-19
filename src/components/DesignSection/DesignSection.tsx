@@ -1,9 +1,13 @@
 import { FC } from "react";
-import Button from "../Button/Button";
+import { Button } from "../";
 import "./DesignSection.scss";
-import { IImage } from "../../types/Image.interface";
 
-const Images: IImage[] = [
+type TImage = {
+  src: string;
+  alt: string;
+};
+
+const Images: TImage[] = [
   {
     src: "/Images/cardImage1.png",
     alt: "card1",
@@ -22,14 +26,14 @@ const Images: IImage[] = [
   },
 ];
 
-const DesignSection: FC = () => {
+export const DesignSection: FC = () => {
   return (
     <section className="container design">
       <div className="design__info">
         <h1 className="design__title">
           Choose the design you like and apply for card right now
         </h1>
-        <Button text="Choose the card" />
+        <Button>Choose the card</Button>
       </div>
 
       <div className="design__cards">
@@ -40,5 +44,3 @@ const DesignSection: FC = () => {
     </section>
   );
 };
-
-export default DesignSection;

@@ -1,13 +1,27 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import "./Button.scss";
+import clsx from "clsx";
 
-interface ButtonProps {
-  text: string;
-  isRed?: boolean;
-}
-
-const Button: FC<ButtonProps> = ({ text, isRed = false }) => {
-  return <button className={isRed ? "btn btn-red" : "btn"}>{text}</button>;
+type TButtonProps = {
+  children: ReactNode;
+  type?: "button" | "submit";
+  buttonType?: "default" | "warning" | "subscribe";
 };
 
-export default Button;
+export const Button: FC<TButtonProps> = ({
+  children,
+  type = "button",
+  buttonType = "default",
+}) => {
+  const buttonClass = clsx(
+    "btn",
+    buttonType === "default" && "default",
+    buttonType === "warning" && "warning",
+    buttonType === "subscribe" && "subscribe__button"
+  );
+  return (
+    <button type={type} className={buttonClass}>
+      {children}
+    </button>
+  );
+};
