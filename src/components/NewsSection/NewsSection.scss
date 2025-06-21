@@ -6,7 +6,7 @@
     color: #000;
     font-weight: 500;
     font-size: 30px;
-    margin-bottom: 12px;
+    margin-bottom: 28px;
   }
 
   &__text {
@@ -14,4 +14,30 @@
     font-weight: 500;
     font-size: 16px;
   }
+
+  &__slider {
+    overflow: hidden;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    padding: 48px 2px;
+    transition: transform 0.3s ease;
+  }
+
+  &__arrows {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+
+    img {
+      cursor: pointer;
+    }
+  }
+}
+
+.rotate {
+  transform: rotate(180deg);
 }

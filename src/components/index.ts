@@ -9,3 +9,4 @@ export { Footer } from "./Footer";
 export { Button } from "./Button";
 export { CustomNavLink } from "./CustomNavLink";
 export { FooterLink } from "./FooterLink";
+export { NewsCard } from "./NewsCard";
