@@ -7,33 +7,6 @@ type TCurrency = {
   value: number;
 };
 
-// const currencyInfo: TCurrency[] = [
-//   {
-//     currency: "USD",
-//     value: 60.78,
-//   },
-//   {
-//     currency: "CNY",
-//     value: 9.08,
-//   },
-//   {
-//     currency: "CHF",
-//     value: 64.78,
-//   },
-//   {
-//     currency: "usd",
-//     value: 60.78,
-//   },
-//   {
-//     currency: "JPY",
-//     value: 0.46,
-//   },
-//   {
-//     currency: "TRY",
-//     value: 3.39,
-//   },
-// ];
-
 const baseURL = "https://v6.exchangerate-api.com/v6";
 const endpoint = "/latest";
 const access_key = "d3198f26ece9d4962ab7c361";
@@ -72,21 +45,21 @@ export const ExchangeSection: FC = () => {
     setCurrencyInfo(currencyValues);
   };
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     await findCurrencies(currencies);
-  //   };
-  //   fetchData();
-  //   const interval = setInterval(async () => {
-  //     if (requestCount < 1000) {
-  //       await fetchData();
-  //       setLastUpdated(new Date().toLocaleString());
-  //     } else {
-  //       clearInterval(interval);
-  //     }
-  //   }, 15 * 60 * 1000);
-  //   return () => clearInterval(interval);
-  // }, [requestCount]);
+  useEffect(() => {
+    const fetchData = async () => {
+      await findCurrencies(currencies);
+    };
+    fetchData();
+    const interval = setInterval(async () => {
+      if (requestCount < 1000) {
+        await fetchData();
+        setLastUpdated(new Date().toLocaleString());
+      } else {
+        clearInterval(interval);
+      }
+    }, 15 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, [requestCount]);
 
   return (
     <section className="container exchange">
