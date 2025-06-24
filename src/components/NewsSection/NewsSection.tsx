@@ -1,90 +1,19 @@
 import { FC, useEffect, useRef, useState } from "react";
-import axios from "axios";
+import { NewsCard } from "../";
+import { TNews } from "../../types/TNews.type";
 import "./NewsSection.scss";
-import { NewsCard } from "../NewsCard";
 
-const api_key = "08226eeb1b9e414d96830ffe69235d0a";
-const baseURL = "https://newsapi.org/v2";
-const endpoint = "/top-headlines?country=us";
-
-type TNews = {
-  source: {
-    id: number | null;
-    name: string;
-  };
-  author: string | null;
-  title: string;
-  description: string;
-  url: string;
-  urlToImage: string;
-  publishedAt: string;
-  content: string;
+type TNewsSectionProps = {
+  news: TNews[];
+  loading: boolean;
 };
 
-export const NewsSection: FC = () => {
-  const [news, setNews] = useState<TNews[]>([]);
-  const [requestCount, setRequestCount] = useState<number>(0);
-  const [loading, setLoading] = useState<boolean>(false);
+export const NewsSection: FC<TNewsSectionProps> = ({ loading, news }) => {
   const [currentPosition, setCurrentPosition] = useState<number>(0);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const [containerWidth, setContainerWidth] = useState<number>(1240);
   const sliderRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const getNews = async () => {
-    const url = baseURL + endpoint + `&apiKey=${api_key}`;
-    try {
-      const resp = await axios.get(url);
-      if (requestCount < 100) setRequestCount((prev) => prev + 1);
-      else return [];
-      return resp.data.articles;
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const isUrlToImageCorrect = (url: string) => {
-    return new Promise<boolean>((resolve) => {
-      const img = new Image();
-      img.src = url;
-
-      const timeout = setTimeout(() => {
-        resolve(false);
-      }, 2000);
-
-      img.onload = () => {
-        clearTimeout(timeout);
-        resolve(img.width > 0 && img.height > 0);
-      };
-
-      img.onerror = () => {
-        clearTimeout(timeout);
-        resolve(false);
-      };
-    });
-  };
-
-  useEffect(() => {
-    const fetchNews = async () => {
-      setLoading(true);
-      try {
-        const freshNews: TNews[] = await getNews();
-
-        const validatedNews = await Promise.all(
-          freshNews.map(async (n) => {
-            const isValid = await isUrlToImageCorrect(n.urlToImage);
-            return isValid ? n : null;
-          })
-        );
-        setNews(validatedNews.filter((n) => n !== null));
-      } catch (error) {
-        console.error(error);
-      }
-      setLoading(false);
-    };
-
-    fetchNews();
-  }, []);
 
   useEffect(() => {
     const handleResize = () => {
