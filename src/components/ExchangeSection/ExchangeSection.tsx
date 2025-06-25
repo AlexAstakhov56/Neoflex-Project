@@ -6,12 +6,14 @@ type TExchangeSectionProps = {
   currencyInfo: TCurrency[];
   lastUpdated: string;
   loading: boolean;
+  isError: boolean;
 };
 
 export const ExchangeSection: FC<TExchangeSectionProps> = ({
   currencyInfo,
   lastUpdated,
   loading,
+  isError,
 }) => {
   return (
     <section className="container exchange">
@@ -23,6 +25,9 @@ export const ExchangeSection: FC<TExchangeSectionProps> = ({
         <h4>Currency</h4>
         <div className="exchange__currencies">
           <ul className="exchange__currencies_grid">
+            {isError && (
+              <p>Не удалось загрузить данные о текущем курсе валют</p>
+            )}
             {loading ? (
               <p>Loading...</p>
             ) : (

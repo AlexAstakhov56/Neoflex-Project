@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseURL = "https://v6.exchangerate-api.com/v6";
 const endpoint = "/latest";
-const access_key = "d3198f26ece9d4962ab7c361";
+const access_key = "d4618fc9eddd02227f6e7f4d";
 
 export const getCurrencies = async (currency = "USD") => {
   const url = baseURL + `/${access_key}` + endpoint + `/${currency}`;

@@ -22,20 +22,30 @@ export const HomePage: FC = () => {
   );
   const [news, setNews] = useState<TNews[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [isCurrencyError, setIsCurrencyError] = useState<boolean>(false);
+  const [isNewsError, setIsNewsError] = useState<boolean>(false);
 
   const findCurrencies = async (currencies: string[]) => {
     const currencyValues: TCurrency[] = [];
-    for (const cur of currencies) {
-      const currencyData = await getCurrencies(cur);
-      if (!currencyData) {
-        return;
-      }
-      const value = currencyData.conversion_rates["RUB"].toFixed(2);
-      if (value) {
+    try {
+      for (const cur of currencies) {
+        const currencyData = await getCurrencies(cur);
+
+        if (!currencyData || !currencyData.conversion_rates) {
+          throw new Error("Invalid data");
+        }
+
+        const rubRate = currencyData.conversion_rates["RUB"];
+        const value = rubRate.toFixed(2);
         currencyValues.push({ currency: cur, value });
       }
+      setCurrencyInfo(currencyValues);
+      setIsCurrencyError(false);
+    } catch (error) {
+      console.error(error);
+      setIsCurrencyError(true);
+      return [];
     }
-    setCurrencyInfo(currencyValues);
   };
 
   const fetchNews = async () => {
@@ -48,8 +58,10 @@ export const HomePage: FC = () => {
         })
       );
       setNews(validatedNews.filter((n) => n !== null));
+      setIsNewsError(false);
     } catch (error) {
       console.error(error);
+      setIsNewsError(true);
     }
   };
 
@@ -81,9 +93,10 @@ export const HomePage: FC = () => {
             currencyInfo={currencyInfo}
             lastUpdated={lastUpdated}
             loading={loading}
+            isError={isCurrencyError}
           />
           <ServicesSection />
-          <NewsSection news={news} loading={loading} />
+          <NewsSection news={news} loading={loading} isError={isNewsError} />
           <SubscribeSection />
         </main>
       </Layout>

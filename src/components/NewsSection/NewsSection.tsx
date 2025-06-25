@@ -6,9 +6,14 @@ import "./NewsSection.scss";
 type TNewsSectionProps = {
   news: TNews[];
   loading: boolean;
+  isError: boolean;
 };
 
-export const NewsSection: FC<TNewsSectionProps> = ({ loading, news }) => {
+export const NewsSection: FC<TNewsSectionProps> = ({
+  loading,
+  news,
+  isError,
+}) => {
   const [currentPosition, setCurrentPosition] = useState<number>(0);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const [containerWidth, setContainerWidth] = useState<number>(1240);
@@ -55,7 +60,9 @@ export const NewsSection: FC<TNewsSectionProps> = ({ loading, news }) => {
             gap: `${gap}px`,
           }}
         >
-          {loading ? (
+          {isError ? (
+            <p>Не удалось загрузить данные о текущих новостях</p>
+          ) : loading ? (
             <p>Loading...</p>
           ) : (
             news.map((n) => (
