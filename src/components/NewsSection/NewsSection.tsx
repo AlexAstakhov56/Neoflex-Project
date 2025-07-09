@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef, useState } from "react";
-import { NewsCard } from "../";
+import { NewsCard, Loader } from "../";
 import { TNews } from "../../types/TNews.type";
 import "./NewsSection.scss";
 
@@ -45,7 +45,7 @@ export const NewsSection: FC<TNewsSectionProps> = ({
   };
 
   return (
-    <section className="container news" ref={containerRef}>
+    <section className="news" ref={containerRef}>
       <h3 className="news__title">Current news from the world of finance</h3>
       <p className="news__text">
         We update the news feed every 15 minutes. You can learn more by clicking
@@ -63,7 +63,7 @@ export const NewsSection: FC<TNewsSectionProps> = ({
           {isError ? (
             <p>Не удалось загрузить данные о текущих новостях</p>
           ) : loading ? (
-            <p>Loading...</p>
+            <Loader />
           ) : (
             news.map((n) => (
               <NewsCard

@@ -1,0 +1,39 @@
+.tabs {
+  &__titles {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    color: #7b7454;
+    font-weight: 500;
+    font-size: 16px;
+    margin-left: 16px;
+    white-space: preserve nowrap;
+
+    @media (max-width: 500px) {
+      font-size: 13px;
+      gap: 16px;
+      margin-left: 0;
+    }
+  }
+
+  &__title {
+    position: relative;
+    padding-bottom: 12px;
+    cursor: pointer;
+  }
+
+  &__title.active:after {
+    content: "";
+    position: absolute;
+    left: -16px;
+    right: -16px;
+    bottom: -2px;
+    border-bottom: 2px solid #7b7454;
+    height: 2px;
+
+    @media (max-width: 500px) {
+      left: -8px;
+      right: -8px;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+.Select-container {
+  flex: 1;
+  min-width: 297px;
+}
+
+.Select {
+  position: relative;
+  width: 100%;
+  margin-top: 8px;
+  font-size: 14px;
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    background-color: #f9f5e3;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 6px;
+    cursor: pointer;
+
+    &.open {
+      border-color: #5b35d5;
+    }
+  }
+
+  &__options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 6px;
+    z-index: 100;
+    overflow-y: auto;
+  }
+
+  &__option {
+    padding: 10px 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+
+  &__arrow {
+    margin-left: 10px;
+  }
+}

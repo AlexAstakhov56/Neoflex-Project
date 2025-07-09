@@ -1,0 +1,101 @@
+.customizeForm {
+  padding: 32px;
+  background: #ffffff;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 28px;
+  margin-bottom: 96px;
+
+  @media (max-width: 500px) {
+    padding: 24px;
+    margin-bottom: 36px;
+  }
+
+  &__amountChoose {
+    display: flex;
+    margin-bottom: 32px;
+
+    @media (max-width: 920px) {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  &__sliderSection {
+    flex: 1;
+    border-right: 1px dashed rgba(128, 128, 128, 0.4);
+    padding-right: 40px;
+
+    @media (max-width: 920px) {
+      padding-right: 0;
+      border-right: none;
+    }
+
+    &_titles {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @media (max-width: 500px) {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  }
+
+  &__slider {
+    margin-top: 32px;
+    border: 1px solid #5b35d5;
+    padding: 24px 24px 41px 24px;
+    border-radius: 10px;
+
+    @media (max-width: 500px) {
+      padding: 16px;
+      margin-top: 20px;
+    }
+
+    p {
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    &_value {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__inputSection {
+    flex: 1;
+    padding-left: 42px;
+
+    @media (max-width: 920px) {
+      padding-left: 0;
+    }
+  }
+
+  &__input {
+    outline: none;
+    padding-bottom: 10px;
+    width: 220px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  &__fields {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 25px;
+  }
+
+  &__submit {
+    text-align: right;
+    margin-top: 24px;
+
+    @media (max-width: 500px) {
+      text-align: center;
+    }
+  }
+}

@@ -28,7 +28,7 @@ const Images: TImage[] = [
 
 export const DesignSection: FC = () => {
   return (
-    <section className="container design">
+    <section className="design">
       <div className="design__info">
         <h1 className="design__title">
           Choose the design you like and apply for card right now

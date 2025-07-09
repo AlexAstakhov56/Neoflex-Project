@@ -1,0 +1,29 @@
+.tooltip-container {
+  position: relative;
+
+  &:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.tooltip {
+  font-weight: 500;
+  font-size: 12px;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
+  color: white;
+  background-color: #3d3d3d;
+  padding: 7px;
+  width: 170px;
+
+  @media (max-width: 500px) {
+    width: 140px;
+    top: 80px;
+  }
+}

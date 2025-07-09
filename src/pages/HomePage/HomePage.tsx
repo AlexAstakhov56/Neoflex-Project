@@ -86,7 +86,7 @@ export const HomePage: FC = () => {
     <>
       <ScrollToTop />
       <Layout>
-        <main>
+        <main className="container">
           <DesignSection />
           <FeaturesSection />
           <ExchangeSection

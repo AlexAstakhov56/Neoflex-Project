@@ -1,0 +1,25 @@
+.title {
+  &.small {
+    font-size: 20px;
+  }
+
+  &.default {
+    font-size: 30px;
+
+    @media (max-width: 500px) {
+      font-size: 24px;
+    }
+  }
+
+  &.large {
+    font-size: 36px;
+
+    @media (max-width: 500px) {
+      font-size: 24px;
+    }
+  }
+
+  &.centered {
+    text-align: center;
+  }
+}

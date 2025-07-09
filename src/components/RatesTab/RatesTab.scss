@@ -1,0 +1,47 @@
+.ratesTab {
+  margin-top: 16px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 16px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    @media (max-width: 900px) {
+      justify-content: space-between;
+    }
+  }
+
+  &__item:last-child {
+    padding-top: 12px;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 500;
+    width: 300px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 16px;
+    color: #434343;
+    padding-left: 20px;
+
+    @media (max-width: 900px) {
+      text-align: right;
+    }
+
+    @media (max-width: 500px) {
+      font-size: 14px;
+    }
+  }
+}

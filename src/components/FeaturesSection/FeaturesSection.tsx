@@ -10,7 +10,7 @@ const features: string[] = [
 
 export const FeaturesSection: FC = () => {
   return (
-    <section className="container features">
+    <section className="features">
       <img src="/Images/FeaturesImage.png" alt="featuresImg" />
 
       <div className="features__info">

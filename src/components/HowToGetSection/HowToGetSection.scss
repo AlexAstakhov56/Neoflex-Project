@@ -1,0 +1,37 @@
+.howToGet {
+  margin-bottom: 44px;
+
+  &__steps {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 70px;
+
+    @media (max-width: 920px) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__step_header {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    margin-bottom: 20px;
+  }
+
+  &__step_number {
+    padding: 12px 18px;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  &__step_text {
+    max-width: 350px;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+  }
+}

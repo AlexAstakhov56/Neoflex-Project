@@ -1,0 +1,45 @@
+.infoCard {
+  background-color: #eaecee;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 28px;
+  padding: 32px;
+  flex: 1;
+  min-width: 406px;
+
+  @media (max-width: 500px) {
+    min-width: 320px;
+    padding: 20px;
+  }
+
+  &__icon {
+    margin-bottom: 24px;
+
+    @media (max-width: 500px) {
+      margin-bottom: 5px;
+    }
+  }
+
+  &__text1 {
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  &__text2 {
+    font-weight: 500;
+    font-size: 16px;
+    color: rgba(67, 67, 67, 0.9);
+    height: 48px;
+
+    @media (max-width: 500px) {
+      height: 30px;
+    }
+  }
+}
+
+.even1 {
+  background-color: rgba(127, 146, 172, 0.7);
+}
+
+.even2 {
+  background-color: rgba(136, 179, 184, 0.6);
+}

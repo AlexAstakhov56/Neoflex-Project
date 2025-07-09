@@ -1,0 +1,1 @@
+export { FAQTab } from "./FAQTab";

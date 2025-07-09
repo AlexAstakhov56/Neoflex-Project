@@ -1,0 +1,44 @@
+.btn {
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s linear;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &.default {
+    background-color: #003cff;
+
+    &:hover {
+      background-color: #7796c0;
+    }
+  }
+
+  &.warning {
+    background-color: rgba(217, 55, 55, 0.8);
+  }
+
+  &.subscribe__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #686df1;
+    font-family: "Ubuntu", sans-serif;
+
+    @media (max-width: 500px) {
+      right: 15px;
+    }
+    span {
+      @media (max-width: 500px) {
+        display: none;
+      }
+    }
+  }
+}

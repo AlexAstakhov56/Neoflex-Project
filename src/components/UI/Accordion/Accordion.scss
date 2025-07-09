@@ -1,0 +1,46 @@
+.accordion {
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px;
+    cursor: pointer;
+
+    @media (max-width: 500px) {
+      padding: 16px;
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 16px;
+    color: #1c1c1e;
+  }
+
+  &__icon {
+    transition: transform 0.3s ease;
+  }
+
+  &__description {
+    font-weight: 400;
+    font-size: 16px;
+    color: #7b7454;
+    padding: 0;
+    max-height: 0;
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &.active {
+      visibility: visible;
+      padding: 32px;
+      max-height: 400px;
+      opacity: 1;
+
+      @media (max-width: 500px) {
+        padding: 16px;
+      }
+    }
+  }
+}

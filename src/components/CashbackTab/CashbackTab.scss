@@ -1,0 +1,11 @@
+.cashbackTab {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 32px;
+
+  @media (max-width: 500px) {
+    gap: 20px;
+    margin-top: 20px;
+  }
+}

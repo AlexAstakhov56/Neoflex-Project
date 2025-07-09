@@ -13,7 +13,7 @@ export const NewsCard: FC<TNewsCardProps> = ({
   link,
   title,
   img,
-  description,
+  description = "",
 }) => {
   return (
     <div className="card">

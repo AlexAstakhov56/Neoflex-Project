@@ -1,0 +1,1 @@
+export { PlatinumSection } from "./PlatinumSection";

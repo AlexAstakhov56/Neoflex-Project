@@ -1,0 +1,8 @@
+.tabsSection {
+  margin-top: 48px;
+  margin-bottom: 96px;
+
+  @media (max-width: 500px) {
+    margin-bottom: 48px;
+  }
+}

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { TCurrency } from "../../types/TCurrency.type";
+import { Loader } from "../../components";
 import "./ExchangeSection.scss";
 
 type TExchangeSectionProps = {
@@ -16,7 +17,7 @@ export const ExchangeSection: FC<TExchangeSectionProps> = ({
   isError,
 }) => {
   return (
-    <section className="container exchange">
+    <section className="exchange">
       <div className="exchange__wrapper">
         <div className="exchange__info">
           <h3 className="exchange__title">Exchange rate in internet bank</h3>
@@ -29,7 +30,7 @@ export const ExchangeSection: FC<TExchangeSectionProps> = ({
               <p>Не удалось загрузить данные о текущем курсе валют</p>
             )}
             {loading ? (
-              <p>Loading...</p>
+              <Loader />
             ) : (
               currencyInfo.map((cur) => (
                 <li key={cur.currency}>

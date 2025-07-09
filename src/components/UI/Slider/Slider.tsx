@@ -1,0 +1,37 @@
+import { FC } from "react";
+import "./Slider.scss";
+
+type TSliderProps = {
+  min: number;
+  max: number;
+  value: number;
+  onChange: (value: number) => void;
+};
+
+export const Slider: FC<TSliderProps> = ({ min, max, value, onChange }) => {
+  const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(event.target.value);
+    onChange(newValue);
+  };
+  return (
+    <div>
+      <input
+        type="range"
+        min={min}
+        max={max}
+        value={value}
+        onChange={handleSliderChange}
+        className="Slider"
+        style={{
+          background: `linear-gradient(to right, #5B35D5 ${
+            ((value - min) / (max - min)) * 100
+          }%, #E2E8F0 ${((value - min) / (max - min)) * 100}%)`,
+        }}
+      />
+      <div className="Slider__values">
+        <p>{min}</p>
+        <p>{max}</p>
+      </div>
+    </div>
+  );
+};
