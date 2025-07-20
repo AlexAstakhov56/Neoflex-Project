@@ -25,62 +25,62 @@ export const HomePage: FC = () => {
   const [isCurrencyError, setIsCurrencyError] = useState<boolean>(false);
   const [isNewsError, setIsNewsError] = useState<boolean>(false);
 
-  // const findCurrencies = async (currencies: string[]) => {
-  //   const currencyValues: TCurrency[] = [];
-  //   try {
-  //     for (const cur of currencies) {
-  //       const currencyData = await getCurrencies(cur);
+  const findCurrencies = async (currencies: string[]) => {
+    const currencyValues: TCurrency[] = [];
+    try {
+      for (const cur of currencies) {
+        const currencyData = await getCurrencies(cur);
 
-  //       if (!currencyData || !currencyData.conversion_rates) {
-  //         throw new Error("Invalid data");
-  //       }
+        if (!currencyData || !currencyData.conversion_rates) {
+          throw new Error("Invalid data");
+        }
 
-  //       const rubRate = currencyData.conversion_rates["RUB"];
-  //       const value = rubRate.toFixed(2);
-  //       currencyValues.push({ currency: cur, value });
-  //     }
-  //     setCurrencyInfo(currencyValues);
-  //     setIsCurrencyError(false);
-  //   } catch (error) {
-  //     console.error(error);
-  //     setIsCurrencyError(true);
-  //     return [];
-  //   }
-  // };
+        const rubRate = currencyData.conversion_rates["RUB"];
+        const value = rubRate.toFixed(2);
+        currencyValues.push({ currency: cur, value });
+      }
+      setCurrencyInfo(currencyValues);
+      setIsCurrencyError(false);
+    } catch (error) {
+      console.error(error);
+      setIsCurrencyError(true);
+      return [];
+    }
+  };
 
-  // const fetchNews = async () => {
-  //   try {
-  //     const freshNews: TNews[] = await getNews();
-  //     const validatedNews = await Promise.all(
-  //       freshNews.map(async (n) => {
-  //         const isValid = await isUrlToImageCorrect(n.urlToImage);
-  //         return isValid ? n : null;
-  //       })
-  //     );
-  //     setNews(validatedNews.filter((n) => n !== null));
-  //     setIsNewsError(false);
-  //   } catch (error) {
-  //     console.error(error);
-  //     setIsNewsError(true);
-  //   }
-  // };
+  const fetchNews = async () => {
+    try {
+      const freshNews: TNews[] = await getNews();
+      const validatedNews = await Promise.all(
+        freshNews.map(async (n) => {
+          const isValid = await isUrlToImageCorrect(n.urlToImage);
+          return isValid ? n : null;
+        })
+      );
+      setNews(validatedNews.filter((n) => n !== null));
+      setIsNewsError(false);
+    } catch (error) {
+      console.error(error);
+      setIsNewsError(true);
+    }
+  };
 
-  // useEffect(() => {
-  //   const fetchCurrenciesAndNews = async () => {
-  //     setLoading(true);
-  //     await findCurrencies(currencies);
-  //     await fetchNews();
-  //     setLoading(false);
-  //   };
-  //   fetchCurrenciesAndNews();
+  useEffect(() => {
+    const fetchCurrenciesAndNews = async () => {
+      setLoading(true);
+      await findCurrencies(currencies);
+      await fetchNews();
+      setLoading(false);
+    };
+    fetchCurrenciesAndNews();
 
-  //   const interval = setInterval(async () => {
-  //     await findCurrencies(currencies);
-  //     setLastUpdated(new Date().toLocaleString());
-  //     clearInterval(interval);
-  //   }, 15 * 60 * 1000);
-  //   return () => clearInterval(interval);
-  // }, []);
+    const interval = setInterval(async () => {
+      await findCurrencies(currencies);
+      setLastUpdated(new Date().toLocaleString());
+      clearInterval(interval);
+    }, 15 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
