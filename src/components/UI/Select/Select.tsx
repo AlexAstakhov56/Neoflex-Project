@@ -17,43 +17,29 @@ export const Select: FC<TSelectProps> = ({
   extraWord = "",
   onSelect,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(optionsData[0]);
 
-  const handleSelect = (option: number) => {
-    setSelected(option);
-    onSelect(option);
-    setIsOpen(false);
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedOption = +event.target.value;
+    setSelected(selectedOption);
+    onSelect(selectedOption);
   };
 
   return (
-    <div className="Select-container">
+    <div className="select-container">
       <Label label={label} required={required} />
-      <div className="Select">
-        <div
-          className={`Select__trigger ${isOpen ? "open" : ""}`}
-          onClick={() => setIsOpen(!isOpen)}
+      <div className="select">
+        <select
+          className="select__dropdown"
+          value={selected}
+          onChange={handleChange}
         >
-          {selected}
-          <img
-            src="/Icons/accordion_arrow.svg"
-            alt="arrow"
-            className="Select__arrow"
-          />
-        </div>
-        {isOpen && (
-          <div className="Select__options">
-            {optionsData.map((opt) => (
-              <div
-                key={opt}
-                className="Select__option"
-                onClick={() => handleSelect(opt)}
-              >
-                {opt} {extraWord}
-              </div>
-            ))}
-          </div>
-        )}
+          {optionsData.map((opt) => (
+            <option key={opt} value={opt}>
+              {opt} {extraWord}
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   );

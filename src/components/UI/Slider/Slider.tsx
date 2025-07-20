@@ -13,6 +13,7 @@ export const Slider: FC<TSliderProps> = ({ min, max, value, onChange }) => {
     const newValue = Number(event.target.value);
     onChange(newValue);
   };
+
   return (
     <div>
       <input
@@ -21,14 +22,19 @@ export const Slider: FC<TSliderProps> = ({ min, max, value, onChange }) => {
         max={max}
         value={value}
         onChange={handleSliderChange}
-        className="Slider"
+        className="slider"
+        list="list"
         style={{
           background: `linear-gradient(to right, #5B35D5 ${
             ((value - min) / (max - min)) * 100
           }%, #E2E8F0 ${((value - min) / (max - min)) * 100}%)`,
         }}
       />
-      <div className="Slider__values">
+      {/* <datalist id="list">
+        <option value={min} />
+        <option value={max} />
+      </datalist> */}
+      <div className="slider__values">
         <p>{min}</p>
         <p>{max}</p>
       </div>

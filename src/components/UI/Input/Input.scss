@@ -1,16 +1,16 @@
-.Input-container {
+.input-container {
   flex: 1;
   min-width: 297px;
 }
 
-.Input__wrapper {
+.input__wrapper {
   position: relative;
   display: flex;
   align-items: center;
   margin-top: 8px;
 }
 
-.Input {
+.input {
   width: 100%;
   font-family: "Ubuntu", sans-serif;
   font-size: 14px;
@@ -24,11 +24,11 @@
   }
 
   &:focus {
-    border: 1px solid #5b35d5;
+    outline: 2px solid #5b35d5;
   }
 
   &.error {
-    border: 2px solid #ff5631;
+    outline: 2px solid #ff5631;
   }
 
   &__icon {

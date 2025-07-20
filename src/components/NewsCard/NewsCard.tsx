@@ -19,7 +19,7 @@ export const NewsCard: FC<TNewsCardProps> = ({
     <div className="card">
       <a href={link} target="_blank">
         <img src={img} alt="news image" className="card__image" />
-        <h3 className="card__title">{title}</h3>
+        <h3 className="card__title">{truncateText(title, 100)}</h3>
         <p className="card__description">{truncateText(description, 170)}</p>
       </a>
     </div>

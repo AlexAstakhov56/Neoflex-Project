@@ -8,7 +8,7 @@ type TLabelProps = {
 
 export const Label: FC<TLabelProps> = ({ label, required = true }) => {
   return (
-    <label className="Label">
+    <label className="label">
       {label}
       {required ? <span>*</span> : ""}
     </label>
