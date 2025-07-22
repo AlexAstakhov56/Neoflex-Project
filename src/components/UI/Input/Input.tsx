@@ -1,20 +1,26 @@
-import { FC } from "react";
 import { Label } from "../../../components";
+import { FieldError, Path, UseFormRegister } from "react-hook-form";
 import "./Input.scss";
-import { FieldError, UseFormRegister } from "react-hook-form";
 
-type TInputProps = {
-  type?: "text" | "number" | "email";
+type TInputProps<
+  TForm extends Record<string, any>,
+  TFieldName extends Path<TForm>
+> = {
+  type?: "text" | "number" | "email" | "date";
   placeholder: string;
   label: string;
   required: boolean;
-  name: string;
+  name: TFieldName;
+  maxLength?: number;
   error?: FieldError;
   isValid: boolean;
-  register: UseFormRegister<any>;
+  register: UseFormRegister<TForm>;
 };
 
-export const Input: FC<TInputProps> = ({
+export const Input = <
+  TForm extends Record<string, any>,
+  TFieldName extends Path<TForm>
+>({
   type = "text",
   label,
   required,
@@ -23,13 +29,15 @@ export const Input: FC<TInputProps> = ({
   error,
   isValid,
   register,
-}) => {
+  maxLength = 40,
+}: TInputProps<TForm, TFieldName>) => {
   return (
     <div className="input-container">
       <Label label={label} required={required} />
       <div className="input__wrapper">
         <input
           type={type}
+          maxLength={maxLength}
           className={`input  ${isValid ? "valid" : ""} ${error ? "error" : ""}`}
           placeholder={placeholder}
           {...register(name)}

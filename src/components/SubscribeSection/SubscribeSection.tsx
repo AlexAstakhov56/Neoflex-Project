@@ -16,7 +16,7 @@ export const SubscribeSection: FC = () => {
     e.preventDefault();
 
     try {
-      const resp = await axios.post("http://localhost:3000", { email });
+      const resp = await axios.post("http://localhost:8080/email", { email });
       if (resp.status === 200) {
         setSuccess(true);
         setEmail("");
