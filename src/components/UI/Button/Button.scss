@@ -9,6 +9,11 @@
     opacity: 0.8;
   }
 
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
   &.default {
     background-color: #003cff;
 
@@ -17,7 +22,7 @@
     }
   }
 
-  &.warning {
+  &.deny {
     background-color: rgba(217, 55, 55, 0.8);
   }
 

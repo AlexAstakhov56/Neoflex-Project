@@ -1,0 +1,50 @@
+.documentForm {
+  padding: 32px;
+  background: #ffffff;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 28px;
+  margin-bottom: 96px;
+  margin-top: 96px;
+
+  @media (max-width: 500px) {
+    padding: 24px;
+    margin-bottom: 36px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 120px;
+    margin-bottom: 76px;
+
+    @media (max-width: 500px) {
+      gap: 16px;
+      flex-direction: column;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__submitSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 43px;
+
+    @media (max-width: 500px) {
+      margin-top: 30px;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__sendSection {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    @media (max-width: 500px) {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+}

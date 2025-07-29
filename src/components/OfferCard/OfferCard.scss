@@ -1,0 +1,43 @@
+.offerCard {
+  background: #ffffff;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 28px;
+  padding: 32px;
+  text-align: center;
+
+  @media (max-width: 500px) {
+    padding: 20px;
+  }
+
+  &:hover {
+    outline: 2px solid #003cff;
+  }
+
+  &__img {
+    margin-bottom: 32px;
+  }
+
+  &__conditions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 90px;
+
+    @media (max-width: 500px) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__textWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 16px;
+    color: #1c1c1e;
+  }
+}

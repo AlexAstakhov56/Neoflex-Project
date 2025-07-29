@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { Tooltip, Button } from "../../components";
 import "./PlatinumSection.scss";
+import { useAppSelector } from "../../hooks/reduxHooks";
+import { useNavigate } from "react-router-dom";
 
 type TAdvantage = {
   adv: string;
@@ -33,6 +35,37 @@ type TPlatinumSectionProps = {
 export const PlatinumSection: FC<TPlatinumSectionProps> = ({
   onApplyClick,
 }) => {
+  const navigate = useNavigate();
+  const { isPrescoringPosted, isOfferChosen } = useAppSelector(
+    (state) => state.forms
+  );
+  const { applicationId, currentStep } = useAppSelector(
+    (state) => state.application
+  );
+
+  const handleContinueClick = () => {
+    if (applicationId === null) {
+      console.error("Application id is not set!");
+      return;
+    }
+    switch (currentStep) {
+      case 2:
+        navigate(`/loan/${applicationId}`);
+        break;
+      case 3:
+        navigate(`/loan/${applicationId}/document`);
+        break;
+      case 4:
+        navigate(`/loan/${applicationId}/document/sign`);
+        break;
+      case 5:
+        navigate(`/loan/${applicationId}/code`);
+        break;
+      default:
+        navigate("/loan");
+    }
+  };
+
   return (
     <section className="platinum">
       <h2 className="platinum__title">Platinum digital credit card</h2>
@@ -56,7 +89,13 @@ export const PlatinumSection: FC<TPlatinumSectionProps> = ({
         ))}
       </div>
       <Button onClick={onApplyClick} borderRadius={8}>
-        Apply for card
+        {isOfferChosen ? (
+          <span onClick={handleContinueClick}>Continue registration</span>
+        ) : isPrescoringPosted ? (
+          <span>Choose an offer</span>
+        ) : (
+          <span>Apply for card</span>
+        )}
       </Button>
     </section>
   );

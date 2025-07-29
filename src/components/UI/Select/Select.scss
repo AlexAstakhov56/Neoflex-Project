@@ -1,6 +1,5 @@
 .select-container {
   flex: 1;
-  min-width: 297px;
 }
 
 .select {
@@ -20,8 +19,20 @@
     border-radius: 6px;
     cursor: pointer;
 
+    &.error {
+      outline: 2px solid #ff5631;
+    }
+
     &:focus {
       border-color: #5b35d5;
     }
+  }
+  &__errorMessage {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-weight: 500;
+    font-size: 16px;
+    color: #ff5631;
   }
 }

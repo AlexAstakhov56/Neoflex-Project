@@ -1,0 +1,15 @@
+.codeSection {
+  margin-top: 168px;
+  margin-bottom: 96px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 32px;
+
+  @media (max-width: 500px) {
+    margin-top: 80px;
+    margin-bottom: 48px;
+    gap: 20px;
+  }
+}

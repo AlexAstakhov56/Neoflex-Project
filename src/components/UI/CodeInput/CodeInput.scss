@@ -1,0 +1,45 @@
+.codeInput-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.codeInput-wrapper {
+  position: relative;
+}
+
+.codeInput {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid #969595;
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px;
+
+  &.filled {
+    border-color: #3182ce;
+  }
+
+  &__placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #808080;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  &__error {
+    position: absolute;
+    top: 60px;
+    left: 24px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #ff5631;
+  }
+}

@@ -1,13 +1,5 @@
 import z from "zod";
-
-type TInputData = {
-  type?: "text" | "number" | "email" | "date";
-  label: string;
-  placeholder: string;
-  required: boolean;
-  inputName: string;
-  maxLength?: number;
-};
+import { TInputData } from "../../types/TInputData.type";
 
 export const inputsData: TInputData[] = [
   {
@@ -40,7 +32,7 @@ export const inputsData: TInputData[] = [
     label: "Your date of birth",
     placeholder: "Select Date and Time",
     required: true,
-    inputName: "birthDate",
+    inputName: "birthdate",
   },
   {
     label: "Your passport series",
@@ -73,17 +65,19 @@ export const formSchema = z.object({
     .min(1, "Enter your last name")
     .regex(latinRegex, "Only Latin letters allowed"),
 
-  middleName: z.string().max(40, "Max length: 40").optional(),
+  middleName: z.string().max(40, "Max length: 40").nullable(),
+
+  term: z.string(),
 
   email: z.email("Incorrect email address"),
 
-  birthDate: z
+  birthdate: z
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/, "Incorrect date of birth")
     .refine((val) => {
       const birthDate = new Date(val);
       if (isNaN(birthDate.getTime())) {
-        return false; // Invalid date
+        return false;
       }
       return true;
     }, "Invalid date")

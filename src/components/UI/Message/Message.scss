@@ -1,0 +1,55 @@
+.message {
+  text-align: center;
+
+  &.border {
+    border: 1px solid #5b35d5;
+    border-radius: 10px;
+    padding-top: 24px;
+    padding-bottom: 34px;
+    margin-bottom: 96px;
+    @media (max-width: 500px) {
+      margin-bottom: 48px;
+    }
+  }
+
+  &.small {
+    margin-bottom: 96px;
+    margin-top: 180px;
+    @media (max-width: 500px) {
+      margin-bottom: 48px;
+      margin-top: 90px;
+    }
+  }
+
+  &.default {
+    margin: 230px 0;
+    @media (max-width: 500px) {
+      margin: 100px 0;
+    }
+  }
+
+  p {
+    font-weight: 500;
+    font-size: 16px;
+    color: #4f5665;
+    margin-top: 32px;
+  }
+
+  img {
+    margin-bottom: 32px;
+    margin-top: 100px;
+    @media (max-width: 500px) {
+      margin-top: 50px;
+    }
+  }
+
+  &__button {
+    margin-top: 32px;
+    margin-bottom: 96px;
+
+    @media (max-width: 500px) {
+      margin-top: 20px;
+      margin-bottom: 48px;
+    }
+  }
+}

@@ -5,8 +5,9 @@ import clsx from "clsx";
 type TButtonProps = {
   children: ReactNode;
   type?: "button" | "submit";
-  buttonType?: "default" | "warning" | "subscribe";
+  buttonType?: "default" | "deny" | "subscribe";
   borderRadius?: number;
+  disabled?: boolean;
   paddingX?: number;
   paddingY?: number;
   onClick?: () => void;
@@ -17,18 +18,20 @@ export const Button: FC<TButtonProps> = ({
   type = "button",
   buttonType = "default",
   borderRadius = 16,
+  disabled = false,
   paddingX = 16,
   paddingY = 16,
   onClick,
 }) => {
   const buttonClass = clsx("btn", {
     default: buttonType === "default",
-    warning: buttonType === "warning",
+    deny: buttonType === "deny",
     subscribe__button: buttonType === "subscribe",
   });
   return (
     <button
       type={type}
+      disabled={disabled}
       className={buttonClass}
       onClick={onClick}
       style={{

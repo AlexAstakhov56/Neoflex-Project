@@ -1,0 +1,38 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  font-weight: 500;
+
+  @media (max-width: 920px) {
+    font-size: 10px;
+    text-transform: lowercase;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    @media (max-width: 920px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  thead {
+    text-align: left;
+  }
+
+  tr {
+    height: 40px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  th {
+    color: #4a5568;
+  }
+
+  td {
+    color: #1a202c;
+  }
+}

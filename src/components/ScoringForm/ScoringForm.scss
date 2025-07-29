@@ -1,0 +1,53 @@
+.scoringForm {
+  margin-top: 88px;
+  padding: 32px;
+  background: #ffffff;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08), 0px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 28px;
+  margin-bottom: 96px;
+
+  @media (max-width: 500px) {
+    padding: 24px;
+    margin-bottom: 36px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    margin-bottom: 40px;
+
+    @media (max-width: 500px) {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__topFields {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 25px;
+    margin-bottom: 32px;
+  }
+
+  &__bottomFields {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 25px;
+    margin-top: 32px;
+    margin-bottom: 20px;
+  }
+
+  &__submit {
+    text-align: right;
+    margin-top: 24px;
+
+    @media (max-width: 500px) {
+      text-align: center;
+    }
+  }
+}

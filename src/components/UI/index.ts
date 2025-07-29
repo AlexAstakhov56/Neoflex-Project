@@ -10,3 +10,8 @@ export { Input } from "./Input";
 export { Select } from "./Select";
 export { Label } from "./Label";
 export { Slider } from "./Slider";
+export { Message } from "./Message";
+export { Checkbox } from "./Checkbox";
+export { Table } from "./Table";
+export { Modal } from "./Modal";
+export { CodeInput } from "./CodeInput";
