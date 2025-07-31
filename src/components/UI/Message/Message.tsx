@@ -32,9 +32,12 @@ export const Message: FC<TMessageProps> = ({
   const navigate = useNavigate();
 
   const handleReset = () => {
-    navigate("/");
-    dispatch(resetFormsState());
-    dispatch(resetApplicationState());
+    navigate("/", { replace: true });
+
+    setTimeout(() => {
+      dispatch(resetFormsState());
+      dispatch(resetApplicationState());
+    }, 100);
   };
 
   const messageClass = clsx("message", {

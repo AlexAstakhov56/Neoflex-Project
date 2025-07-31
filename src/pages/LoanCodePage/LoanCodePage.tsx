@@ -6,6 +6,7 @@ import { Layout } from "../../layout";
 import { CodeSection, Loader, Message } from "../../components";
 import axios from "axios";
 import { setCodePosted } from "../../store/formsSlice";
+import { setCode } from "../../store/applicationSlice";
 
 export const LoanCodePage: FC = () => {
   const navigate = useNavigate();
@@ -57,7 +58,23 @@ export const LoanCodePage: FC = () => {
     } else if (!reduxApplicationId && urlApplicationId) {
       navigate(RoutePath[AppRoutes.NOTFOUND]);
     } else if (currentStep < 5) navigate(RoutePath[AppRoutes.NOTFOUND]);
-  }, [urlApplicationId, reduxApplicationId]);
+    const fetchApplicationData = async () => {
+      try {
+        const resp = await axios.get(
+          `http://localhost:8080/admin/application/${reduxApplicationId}`
+        );
+        if (resp.data) {
+          const { sesCode } = resp.data;
+          dispatch(setCode(String(sesCode)));
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    if (reduxApplicationId) {
+      fetchApplicationData();
+    }
+  }, [urlApplicationId, reduxApplicationId, navigate, currentStep]);
 
   if (isLoading) return <Loader marginTop={150} marginBottom={100} />;
 

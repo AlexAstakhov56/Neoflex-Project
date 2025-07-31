@@ -33,8 +33,8 @@ export const ScoringForm: FC = () => {
     setIsLoading(true);
     try {
       const requestData = {
-        gender: data.gender,
-        maritalStatus: data.maritalStatus,
+        gender: data.gender.toUpperCase(),
+        maritalStatus: data.maritalStatus.split("/").join("_").toUpperCase(),
         dependentAmount: +data.dependentAmount,
         passportIssueDate: data.passportIssueDate,
         passportIssueBranch:
@@ -42,10 +42,13 @@ export const ScoringForm: FC = () => {
           "-" +
           data.passportIssueBranch.slice(3, 6),
         employment: {
-          employmentStatus: data.employmentStatus,
+          employmentStatus: data.employmentStatus
+            .split(" ")
+            .join("_")
+            .toUpperCase(),
           employerINN: data.employerINN,
           salary: +data.salary,
-          position: data.position,
+          position: data.position.split(" ").join("_").toUpperCase(),
           workExperienceTotal: +data.workExperienceTotal,
           workExperienceCurrent: +data.workExperienceCurrent,
         },

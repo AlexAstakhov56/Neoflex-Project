@@ -63,25 +63,25 @@ export const selectData: TSelectData[] = [
     label: "What's your gender",
     required: true,
     selectName: "gender",
-    optionsData: ["MALE", "FEMALE"],
+    optionsData: ["Male", "Female"],
   },
   {
     label: "Your marital status",
     required: true,
     selectName: "maritalStatus",
-    optionsData: ["MARRIED", "DIVORCED", "SINGLE", "WIDOW_WIDOWER"],
+    optionsData: ["Married", "Divorced", "Single", "Widow/widower"],
   },
   {
     label: "Your employment status",
     required: true,
     selectName: "employmentStatus",
-    optionsData: ["UNEMPLOYED", "SELF_EMPLOYED", "EMPLOYED", "BUSINESS_OWNER"],
+    optionsData: ["Unemployed", "Self employed", "Employed", "Business owner"],
   },
   {
     label: "Your position",
     required: true,
     selectName: "position",
-    optionsData: ["WORKER", "MID_MANAGER", "TOP_MANAGER", "OWNER"],
+    optionsData: ["Worker", "Mid manager", "Top manager", "Owner"],
   },
 ];
 
