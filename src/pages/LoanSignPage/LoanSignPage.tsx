@@ -1,30 +1,16 @@
-import { FC, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { FC } from "react";
 import { useAppSelector } from "../../hooks/reduxHooks";
-import { AppRoutes, RoutePath } from "../../router";
 import { Layout } from "../../layout";
 import { Message, SignSection } from "../../components";
+import { useApplication } from "../../hooks/useApplication";
 
 export const LoanSignPage: FC = () => {
-  const navigate = useNavigate();
   const { isSignPosted } = useAppSelector((state) => state.forms);
-  const { applicationId: reduxApplicationId, currentStep } = useAppSelector(
-    (state) => state.application
-  );
-  const { applicationId: urlApplicationId } = useParams<{
-    applicationId: string;
-  }>();
+  const { isValid } = useApplication({ minStep: 4 });
 
-  useEffect(() => {
-    if (urlApplicationId && reduxApplicationId) {
-      const parsedUrlApplicationId = parseInt(urlApplicationId, 10);
-      if (parsedUrlApplicationId !== reduxApplicationId) {
-        navigate(RoutePath[AppRoutes.NOTFOUND]);
-      }
-    } else if (!reduxApplicationId && urlApplicationId) {
-      navigate(RoutePath[AppRoutes.NOTFOUND]);
-    } else if (currentStep < 4) navigate(RoutePath[AppRoutes.NOTFOUND]);
-  }, [urlApplicationId, reduxApplicationId]);
+  if (!isValid) {
+    return null;
+  }
 
   return (
     <Layout>

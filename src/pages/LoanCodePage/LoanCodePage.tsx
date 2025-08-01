@@ -1,27 +1,18 @@
-import { FC, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { FC, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
-import { AppRoutes, RoutePath } from "../../router";
 import { Layout } from "../../layout";
 import { CodeSection, Loader, Message } from "../../components";
 import axios from "axios";
 import { setCodePosted } from "../../store/formsSlice";
 import { setCode } from "../../store/applicationSlice";
+import { useApplication } from "../../hooks/useApplication";
 
 export const LoanCodePage: FC = () => {
-  const navigate = useNavigate();
   const [isValidCode, setIsValidCode] = useState(true);
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const { isCodePosted } = useAppSelector((state) => state.forms);
-  const {
-    applicationId: reduxApplicationId,
-    code,
-    currentStep,
-  } = useAppSelector((state) => state.application);
-  const { applicationId: urlApplicationId } = useParams<{
-    applicationId: string;
-  }>();
+  const { applicationId, code } = useAppSelector((state) => state.application);
 
   const handleCodeChange = async (newCode: string) => {
     const isValidCode = newCode === code;
@@ -30,7 +21,7 @@ export const LoanCodePage: FC = () => {
       setIsLoading(true);
       try {
         const resp = await axios.post(
-          `http://localhost:8080/document/${reduxApplicationId}/sign/code`,
+          `http://localhost:8080/document/${applicationId}/sign/code`,
           code,
           {
             headers: {
@@ -49,32 +40,20 @@ export const LoanCodePage: FC = () => {
     }
   };
 
-  useEffect(() => {
-    if (urlApplicationId && reduxApplicationId) {
-      const parsedUrlApplicationId = parseInt(urlApplicationId, 10);
-      if (parsedUrlApplicationId !== reduxApplicationId) {
-        navigate(RoutePath[AppRoutes.NOTFOUND]);
-      }
-    } else if (!reduxApplicationId && urlApplicationId) {
-      navigate(RoutePath[AppRoutes.NOTFOUND]);
-    } else if (currentStep < 5) navigate(RoutePath[AppRoutes.NOTFOUND]);
-    const fetchApplicationData = async () => {
-      try {
-        const resp = await axios.get(
-          `http://localhost:8080/admin/application/${reduxApplicationId}`
-        );
-        if (resp.data) {
-          const { sesCode } = resp.data;
-          dispatch(setCode(String(sesCode)));
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    if (reduxApplicationId) {
-      fetchApplicationData();
-    }
-  }, [urlApplicationId, reduxApplicationId, navigate, currentStep]);
+  const { isValid } = useApplication({
+    minStep: 5,
+    fetchFn: async (applicationId) => {
+      const resp = await axios.get(
+        `http://localhost:8080/admin/application/${applicationId}`
+      );
+      const { sesCode } = resp.data;
+      dispatch(setCode(String(sesCode)));
+    },
+  });
+
+  if (!isValid) {
+    return null;
+  }
 
   if (isLoading) return <Loader marginTop={150} marginBottom={100} />;
 

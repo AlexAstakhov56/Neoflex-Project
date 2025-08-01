@@ -1,11 +1,5 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import "./Table.scss";
-
-type SortDirection = "asc" | "desc";
-type SortConfig<T> = {
-  key: keyof T;
-  direction: SortDirection;
-} | null;
 
 type TableProps<T extends Record<string, unknown>> = {
   data: T[];
@@ -16,48 +10,41 @@ export const Table = <T extends Record<string, unknown>>({
   data,
   headers,
 }: TableProps<T>) => {
-  const [sortConfig, setSortConfig] = useState<SortConfig<T>>(null);
+  const [sortConfig, setSortConfig] = useState<{
+    key: keyof T;
+    direction: "asc" | "desc";
+  } | null>(null);
+
   const dataKeys =
     data.length > 0 ? (Object.keys(data[0]) as Array<keyof T>) : [];
 
-  const handleSort = (key: keyof T) => {
-    let direction: SortDirection = "asc";
-    if (sortConfig?.key === key) {
-      direction = sortConfig.direction === "asc" ? "desc" : "asc";
-    } else {
-      direction = "asc";
+  const sortedData = [...data].sort((a, b) => {
+    if (!sortConfig) return 0;
+
+    const aValue = a[sortConfig.key];
+    const bValue = b[sortConfig.key];
+
+    if (!aValue && !bValue) return 0;
+    if (!aValue) return sortConfig.direction === "asc" ? -1 : 1;
+    if (!bValue) return sortConfig.direction === "asc" ? 1 : -1;
+
+    if (typeof aValue === "number" && typeof bValue === "number") {
+      return sortConfig.direction === "asc" ? aValue - bValue : bValue - aValue;
     }
-    setSortConfig({ key, direction });
-  };
 
-  const sortData = (data: T[], config: SortConfig<T>) => {
-    if (!config) return data;
+    return sortConfig.direction === "asc"
+      ? String(aValue).localeCompare(String(bValue))
+      : String(bValue).localeCompare(String(aValue));
+  });
 
-    return [...data].sort((a, b) => {
-      const aValue = a[config.key];
-      const bValue = b[config.key];
-
-      if (aValue == null && bValue == null) return 0;
-      if (aValue == null) return config.direction === "asc" ? -1 : 1;
-      if (bValue == null) return config.direction === "asc" ? 1 : -1;
-
-      if (typeof aValue === "number" && typeof bValue === "number") {
-        return config.direction === "asc" ? aValue - bValue : bValue - aValue;
+  const handleSort = (key: keyof T) => {
+    setSortConfig((prev) => {
+      if (prev?.key === key) {
+        return { key, direction: prev.direction === "asc" ? "desc" : "asc" };
       }
-
-      const aString = String(aValue);
-      const bString = String(bValue);
-
-      return config.direction === "asc"
-        ? aString.localeCompare(bString)
-        : bString.localeCompare(aString);
+      return { key, direction: "desc" };
     });
   };
-
-  const sortedData = useMemo(() => {
-    if (data.length === 0) return [];
-    return sortData(data, sortConfig);
-  }, [data, sortConfig, dataKeys]);
 
   const formatCellValue = (value: unknown) => {
     if (value === null) return "-";
@@ -82,11 +69,7 @@ export const Table = <T extends Record<string, unknown>>({
             const key = dataKeys[index];
             const isSorted = sortConfig?.key === key;
             return (
-              <th
-                key={header}
-                onClick={() => handleSort(key)}
-                style={{ cursor: "pointer" }}
-              >
+              <th key={header} onClick={() => handleSort(key)}>
                 <div className="table__header">
                   {header.toUpperCase()}
                   <img
@@ -110,9 +93,7 @@ export const Table = <T extends Record<string, unknown>>({
         {sortedData.map((row, rowIndex) => (
           <tr key={rowIndex}>
             {dataKeys.map((key) => (
-              <td key={`${String(key)}-${rowIndex}`}>
-                {formatCellValue(row[key])}
-              </td>
+              <td key={String(key)}>{formatCellValue(row[key])}</td>
             ))}
           </tr>
         ))}
