@@ -30,7 +30,10 @@ export const Accordion: FC<TAccordionProps> = ({
             alt="accordion-icon"
           />
         </div>
-        <div className={`accordion__description ${isActive ? "active" : ""} `}>
+        <div
+          className={`accordion__description ${isActive ? "active" : ""} `}
+          data-testid="accordion-description"
+        >
           {description}
         </div>
       </div>

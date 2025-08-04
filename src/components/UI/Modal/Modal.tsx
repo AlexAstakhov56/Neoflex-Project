@@ -27,6 +27,8 @@ export const Modal: FC<TModalProps> = ({
       <div
         className="modal__content"
         style={{ width }}
+        role="dialog"
+        aria-modal="true"
         onClick={(e) => e.stopPropagation()}
       >
         {title && (
@@ -35,6 +37,7 @@ export const Modal: FC<TModalProps> = ({
             <img
               src="/public/Icons/close_icon.svg"
               alt="close"
+              role="close_btn"
               className="modal__close"
               onClick={onClose}
             />
